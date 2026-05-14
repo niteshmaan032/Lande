@@ -12,7 +12,7 @@ import {
   type Variants,
 } from "framer-motion";
 import { BsTelegram, BsTwitterX } from "react-icons/bs";
-import { HiArrowLongRight, HiBars3, HiXMark } from "react-icons/hi2";
+import { HiArrowLongRight, HiBars3, HiEnvelope, HiXMark } from "react-icons/hi2";
 import "./Home.css";
 
 const navItems = [
@@ -192,20 +192,17 @@ const roadmap = [
 const footerColumns = [
   {
     heading: "PAGES",
-    links: ["HOME", "SERVICES", "ABOUT", "CAREER", "CONTACT"],
-  },
-  {
-    heading: "CMS",
-    links: ["WORK", "WORK SINGLE", "BLOG", "BLOG SINGLE", "PRICING"],
-  },
-  {
-    heading: "UTILITY PAGES",
     links: [
-      "404 ERROR PAGE",
-      "PASSWORD PROTECTED",
-      "STYLEGUIDE",
-      "LICENSING",
-      "CHANGELOG",
+      { label: "HOME", href: "#home" },
+      { label: "TOKENOMICS", href: "#tokenomics" },
+      { label: "ROAD MAP", href: "#roadmap" },
+      { label: "USE CASES", href: "#use-cases" },
+    ],
+  },
+  {
+    heading: "CONTACT",
+    links: [
+      { label: "info@gmail.com", href: "mailto:info@gmail.com", icon: true },
     ],
   },
 ];
@@ -800,9 +797,11 @@ export default function Home() {
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.3 }}
               >
-                LANDE is a blockchain-powered Learn-to-Earn ecosystem designed
-                to transform how people learn, earn, and grow in the global
-                economy.
+                At LANDE, we believe learning should create real value. Our AI
+                and blockchain-powered ecosystem combines education, community
+                engagement, and reward-based participation to help users learn
+                skills, access opportunities, and grow financially through
+                innovation and knowledge.
               </motion.h2>
             </div>
           </div>
@@ -1119,7 +1118,7 @@ export default function Home() {
       <footer className="lande-footer">
         <div className="container lande-shell">
           <div className="row g-4 lande-footer-top">
-            <div className="col-lg-4 lande-footer-brand-col">
+            <div className="col-lg-6 lande-footer-brand-col">
               <div className="lande-footer-brand">
                 <Image
                   src="/images/Logo.png"
@@ -1153,15 +1152,18 @@ export default function Home() {
                 </a>
               </div>
             </div>
-            <div className="col-lg-7 offset-lg-1">
+            <div className="col-lg-6">
               <div className="row g-4 lande-footer-links-group">
                 {footerColumns.map((column) => (
                   <div key={column.heading} className="col-sm-4">
                     <h3>{column.heading}</h3>
                     <ul className="lande-footer-links">
                       {column.links.map((link) => (
-                        <li key={link}>
-                          <a href="#">{link}</a>
+                        <li key={link.label}>
+                          <a href={link.href}>
+                            {link.icon && <HiEnvelope style={{ marginRight: "0.35rem", verticalAlign: "middle" }} />}
+                            {link.label}
+                          </a>
                         </li>
                       ))}
                     </ul>
