@@ -1,0 +1,1484 @@
+.lande-page {
+  --lande-font-family: var(--font-saira);
+  --lande-bg: var(--background);
+  --lande-surface: #0d0c31;
+  --lande-surface-alt: #0b0a2b;
+  --lande-surface-soft: rgba(17, 15, 55, 0.96);
+  --lande-text: #f7f4ff;
+  --lande-text-muted: #c3bdd7;
+  --lande-text-soft: rgba(255, 255, 255, 0.7);
+  --lande-border: rgba(255, 255, 255, 0.12);
+  --lande-border-strong: rgba(255, 255, 255, 0.22);
+  --lande-orange: #ff9d11;
+  --lande-orange-strong: #ff8a00;
+  --lande-green: #12f75e;
+  --lande-shadow: 0 24px 70px rgba(0, 0, 0, 0.35);
+  background: #0b0a24;
+  color: var(--lande-text);
+  font-family: var(--lande-font-family);
+  overflow: clip;
+}
+
+.lande-page a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.lande-shell {
+}
+
+.lande-support-wrap {
+  position: relative;
+  z-index: 100;
+}
+
+.lande-support-bar {
+  background: var(--lande-orange);
+  border: 0;
+  color: #fff;
+  cursor: pointer;
+  display: block;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  padding: 0.8rem 1rem;
+  text-align: center;
+  width: 100%;
+  position: relative;
+  z-index: 2;
+}
+
+.lande-support-panel {
+  align-items: center;
+  background: rgba(13, 10, 36, 0.98);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  left: 0;
+  padding: 1rem 1.25rem 1.15rem;
+  position: absolute;
+  right: 0;
+  top: 100%;
+  z-index: 1;
+}
+
+.lande-support-close {
+  background: transparent;
+  border: 0;
+  color: #ffffff;
+  font-size: 24px;
+  line-height: 1;
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.lande-support-panel p {
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 16px;
+  margin: 0;
+}
+
+.lande-support-donate {
+  background: #fff;
+  border: 0;
+  border-radius: 999px;
+  color: #0b0a24;
+  font-size: 15px;
+  font-weight: 700;
+  min-height: 2.8rem;
+  padding: 0.65rem 1.2rem;
+}
+
+.lande-donation-modal-backdrop {
+  align-items: center;
+  background: rgba(2, 2, 10, 0.72);
+  display: flex;
+  inset: 0;
+  justify-content: center;
+  padding: 1.25rem;
+  position: fixed;
+  z-index: 200;
+}
+
+.lande-donation-modal {
+  background: #ffffff;
+  border: 0;
+  border-radius: 1.25rem;
+  max-width: 48rem;
+  padding: 2.75rem 3rem 3rem;
+  width: 100%;
+}
+
+.lande-donation-modal-head {
+  align-items: flex-start;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.4rem;
+  position: relative;
+}
+
+.lande-donation-modal-head > div {
+  width: 100%;
+}
+
+.lande-donation-modal h3 {
+  color: var(--lande-orange);
+  font-size: 26px;
+  margin: 0;
+  text-align: center;
+  width: 100%;
+}
+
+.lande-donation-close {
+  background: transparent;
+  border: 0;
+  color: #4f6070;
+  font-size: 28px;
+  line-height: 1;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.lande-donation-copy {
+  color: #4f6070;
+  font-size: 18px;
+  margin: 1rem 0 0.75rem;
+  text-align: center;
+}
+
+.lande-donation-qr-wrap {
+  display: flex;
+  justify-content: center;
+}
+
+.lande-fake-qr-svg {
+  background: #fff;
+  border: 1px solid #d5dbe3;
+  border-radius: 0.35rem;
+  height: 10rem;
+  width: 10rem;
+}
+
+.lande-donation-address {
+  color: #4a86ff;
+  display: block;
+  font-size: 16px;
+  margin: 1rem auto 1.4rem;
+  text-align: center;
+}
+
+.lande-donation-amounts {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-bottom: 1.5rem;
+}
+
+.lande-donation-amount {
+  background: #ff9d11;
+  border: 0;
+  border-radius: 0;
+  color: #fff;
+  padding: 0.9rem 0.7rem;
+  text-align: center;
+}
+
+.lande-donation-amount.is-active {
+  background: #f28a00;
+}
+
+.lande-donation-amount strong,
+.lande-donation-amount span {
+  display: block;
+}
+
+.lande-donation-amount strong {
+  font-size: 18px;
+}
+
+.lande-donation-amount span {
+  font-size: 14px;
+  margin-top: 0.25rem;
+}
+
+.lande-donation-inputs {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-bottom: 1rem;
+}
+
+.lande-donation-field,
+.lande-donation-note {
+  background: #fff;
+  border: 1px solid #d6dce3;
+  color: #3c4b5b;
+  font-size: 16px;
+}
+
+.lande-donation-field {
+  outline: none;
+  min-height: 3.6rem;
+  padding: 1rem 1.2rem;
+}
+
+.lande-donation-note {
+  min-height: 5rem;
+  outline: none;
+  padding: 1rem 1.2rem;
+  resize: vertical;
+  width: 100%;
+}
+
+.lande-donation-field::placeholder,
+.lande-donation-note::placeholder {
+  color: #7a8795;
+}
+
+.lande-hero-section {
+  background-image: url("/images/hero-bg.png");
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 100svh;
+  padding: 1.75rem 0 0;
+  position: relative;
+}
+
+.lande-header {
+  align-items: center;
+  display: flex;
+  gap: 1.25rem;
+  justify-content: space-between;
+  margin-bottom: 1.75rem;
+  position: relative;
+  z-index: 50;
+}
+
+.lande-header-wrap {
+  position: relative;
+  z-index: 50;
+}
+
+.lande-brand {
+  align-items: center;
+  display: inline-flex;
+  font-size: 22px;
+  font-weight: 700;
+  gap: 6px;
+  letter-spacing: 0.02em;
+}
+
+.lande-brand img {
+  border-radius: 50%;
+  display: block;
+}
+
+.lande-nav {
+  align-items: center;
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+}
+
+.lande-header-actions {
+  align-items: center;
+  display: flex;
+  gap: 1rem;
+}
+
+.lande-menu-toggle {
+  align-items: center;
+  background: transparent;
+  border: 0;
+  color: #fff;
+  cursor: pointer;
+  display: none;
+  font-size: 2rem;
+  justify-content: center;
+  padding: 0;
+}
+
+.lande-mobile-menu {
+  background: rgba(11, 10, 36, 0.98);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1rem;
+  margin: 0;
+  max-width: 21rem;
+  padding: 1rem;
+  position: absolute;
+  right: 0;
+  top: calc(100% + 0.5rem);
+  width: min(21rem, calc(100vw - 2rem));
+  z-index: 60;
+}
+
+.lande-mobile-menu-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.lande-mobile-menu-links a {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0.65rem 0.25rem;
+}
+
+.lande-buy-btn-mobile {
+  margin-top: 0.9rem;
+  width: 100%;
+}
+
+.lande-nav a {
+  color: rgba(255, 255, 255, 0.86);
+  font-size: 1.1rem;
+  font-weight: 500;
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.lande-nav a:hover,
+.lande-nav a:focus-visible {
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+.lande-buy-btn,
+.lande-btn {
+  align-items: center;
+  border-radius: 999px;
+  display: inline-flex;
+  font-size: 1.05rem;
+  font-weight: 600;
+  justify-content: center;
+  min-height: 3.25rem;
+  transition:
+    transform 0.22s ease,
+    box-shadow 0.22s ease,
+    background-color 0.22s ease;
+}
+
+.lande-buy-btn {
+  background: var(--lande-orange);
+  color: #fff;
+  min-width: 8.8rem;
+  padding: 0.75rem 1.4rem;
+}
+
+.lande-buy-btn:hover,
+.lande-buy-btn:focus-visible,
+.lande-btn:hover,
+.lande-btn:focus-visible,
+.lande-socials a:hover,
+.lande-socials a:focus-visible,
+.lande-footer-links a:hover,
+.lande-footer-links a:focus-visible {
+  transform: translateY(-2px);
+}
+
+.lande-buy-btn:hover,
+.lande-buy-btn:focus-visible,
+.lande-btn-primary:hover,
+.lande-btn-primary:focus-visible {
+  background: var(--lande-orange-strong);
+  box-shadow: 0 16px 34px rgba(255, 138, 0, 0.24);
+}
+
+.lande-btn {
+  min-width: 13rem;
+  padding: 0.9rem 1.6rem;
+}
+
+.lande-btn-light {
+  background: #fff;
+  color: #000 !important;
+}
+
+.lande-btn-light:visited,
+.lande-btn-light:hover,
+.lande-btn-light:focus-visible,
+.lande-btn-light:active {
+  color: #000 !important;
+}
+
+.lande-btn-light:hover,
+.lande-btn-light:focus-visible {
+  box-shadow: 0 16px 32px rgba(255, 255, 255, 0.16);
+}
+
+.lande-btn-primary {
+  background: var(--lande-orange);
+  color: #fff;
+}
+
+.lande-hero {
+  min-height: calc(100svh - 5.85rem);
+  overflow: visible;
+  padding: 4.5rem 2.75rem 7rem;
+  position: relative;
+}
+
+.lande-hero-content {
+  margin: 0 auto;
+  max-width: 58rem;
+  position: relative;
+  text-align: center;
+  z-index: 2;
+}
+
+.lande-pill,
+.lande-chip {
+  align-items: center;
+  background: rgba(8, 7, 29, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 999px;
+  color: rgba(255, 255, 255, 0.92);
+  display: inline-flex;
+  font-size: 1rem;
+  font-weight: 500;
+  justify-content: center;
+  min-height: 3rem;
+  padding: 0.55rem 1.5rem;
+}
+
+.lande-hero h1 {
+  font-size: 72px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  line-height: 1.05;
+  margin: 1.7rem 0 1.35rem;
+}
+
+.lande-hero p {
+  color: var(--lande-text-muted);
+  font-size: 22px;
+  line-height: 1.6;
+  margin: 0 auto;
+  max-width: 35rem;
+}
+
+.lande-hero-actions {
+  display: flex;
+  gap: 1.25rem;
+  justify-content: center;
+  margin-top: 2.6rem;
+}
+
+.lande-coin {
+  position: absolute;
+  z-index: 1;
+}
+
+.lande-coin img {
+  display: block;
+  height: auto;
+  transform: scale(0.66);
+  transform-origin: center;
+}
+
+.lande-coin-solana img {
+  transform: scale(0.76);
+}
+
+.lande-coin-solana {
+  left: 9%;
+  top: -2%;
+}
+
+.lande-coin-ethereum {
+  left: -7%;
+  top: 23%;
+}
+
+.lande-coin-ripple {
+  right: -5%;
+  top: 23%;
+}
+
+.lande-coin-tether {
+  right: 18%;
+  top: 0.5%;
+}
+
+.lande-coin-dash {
+  right: 4%;
+  top: 62%;
+}
+
+.lande-coin-bitcoin {
+  bottom: 12%;
+  left: 7%;
+}
+
+.lande-content-section {
+  padding: 1rem 0 0;
+}
+
+#tokenomics {
+  padding-bottom: 60px;
+}
+
+.lande-divider {
+  align-items: center;
+  display: flex;
+  gap: 1.3rem;
+  justify-content: center;
+  margin: 60px auto;
+  max-width: 68rem;
+}
+
+.lande-divider::before,
+.lande-divider::after {
+  background: rgba(255, 255, 255, 0.13);
+  content: "";
+  flex: 1;
+  height: 1px;
+}
+
+.lande-divider span {
+  border: 2px solid rgba(255, 255, 255, 0.24);
+  border-radius: 50%;
+  display: block;
+  height: 1.45rem;
+  width: 1.45rem;
+}
+
+.lande-section-heading {
+  margin-bottom: 3rem;
+}
+
+.lande-about-chip {
+  min-width: 8.7rem;
+}
+
+.lande-about-title {
+  font-size: 32px !important;
+  line-height: 1.52 !important;
+  margin: 0 !important;
+  text-align: start;
+}
+
+.lande-about-heading {
+  justify-content: space-between;
+}
+
+.lande-section-heading h2,
+.lande-tokenomics-header h2,
+.lande-cta h2 {
+  font-size: 42px;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  line-height: 1.33;
+  margin: 0;
+}
+
+.lande-card {
+  background: rgba(11, 10, 43, 0.9);
+  border: 1px solid #11115b;
+  border-radius: 1rem;
+  box-shadow: none;
+  height: 100%;
+  padding: 2.2rem 2.15rem;
+}
+
+.lande-card-title {
+  align-items: center;
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.lande-card-title h3 {
+  font-size: 30px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.lande-card-orange .lande-card-title h3,
+.lande-card-orange .lande-card-closing strong {
+  color: var(--lande-orange);
+}
+
+.lande-about-problem .lande-card-title h3 {
+  color: #f2472c;
+}
+
+.lande-card-green .lande-card-title h3,
+.lande-card-green .lande-card-closing {
+  color: var(--lande-green);
+}
+
+.lande-card p,
+.lande-card li {
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 18px;
+  line-height: 1.65;
+}
+
+.lande-about-card {
+  background: #09072b;
+  padding: 1.7rem 1.55rem;
+  box-shadow: none;
+}
+
+.lande-about-vision {
+  min-height: 39rem;
+  padding: 2.5rem 2.2rem;
+}
+
+.lande-about-vision .lande-card-title {
+  margin-bottom: 2rem;
+}
+
+.lande-about-vision .lande-card-lead {
+  margin-bottom: 1.75rem;
+}
+
+.lande-about-vision .lande-about-copy {
+  margin-bottom: 1.4rem;
+}
+
+.lande-about-vision .lande-card-closing {
+  margin-top: 2rem;
+}
+
+.lande-about-problem {
+  min-height: 17rem;
+}
+
+.lande-about-solution {
+  min-height: 22.5rem;
+}
+
+.lande-card-lead {
+  font-size: 22px;
+  font-weight: 500;
+  margin-bottom: 1.15rem;
+}
+
+.lande-about-copy {
+  margin-bottom: 1rem;
+}
+
+.lande-card-copy {
+  margin-bottom: 1.8rem;
+}
+
+.lande-card ul,
+.lande-timeline-card ul,
+.lande-footer-links {
+  margin: 0;
+  padding-left: 1.35rem;
+}
+
+.lande-about-card ul {
+  list-style: disc;
+  padding-left: 1.5rem;
+}
+
+.lande-card li,
+.lande-timeline-card li {
+  margin-bottom: 0.5rem;
+}
+
+.lande-about-card li::marker {
+  color: #ffffff !important;
+}
+
+.lande-card-closing {
+  margin-top: 1.4rem;
+}
+
+.lande-about-emphasis span {
+  color: var(--lande-orange);
+}
+
+.lande-about-solution-lead {
+  margin-bottom: 0.9rem;
+}
+
+.lande-about-solution-close {
+  color: rgba(255, 255, 255, 0.9) !important;
+  line-height: 1.5 !important;
+  margin-top: 1rem;
+}
+
+.lande-about-solution-close span {
+  align-items: center;
+  color: var(--lande-green);
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.lande-tokenomics-header {
+  margin-bottom: 2rem;
+}
+
+.lande-tokenomics-header h2 {
+  font-size: 32px !important;
+}
+
+.lande-tokenomics-chip,
+.lande-usecases-chip,
+.lande-roadmap-chip {
+  min-width: 8.7rem;
+}
+
+.lande-tokenomics-title,
+.lande-usecases-title,
+.lande-roadmap-title {
+  text-align: start;
+}
+
+.lande-tokenomics-card {
+  background: #09072b;
+  border: 1px solid #11115b;
+  border-radius: 1rem;
+  box-shadow: none;
+  max-width: 43rem;
+  padding: 2.2rem 2.2rem 1.9rem;
+}
+
+.lande-tokenomics-chart-card {
+  background: #09072b;
+  border: 1px solid #11115b;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  height: 100%;
+  justify-content: center;
+  padding: 1.9rem 1.6rem;
+}
+
+.lande-tokenomics-chart {
+  align-items: center;
+  border-radius: 50%;
+  display: flex;
+  height: 18rem;
+  justify-content: center;
+  margin: 0 auto;
+  position: relative;
+  width: 18rem;
+}
+
+.lande-tokenomics-chart-svg {
+  height: calc(100% + 1.6rem);
+  inset: -0.8rem;
+  position: absolute;
+  width: calc(100% + 1.6rem);
+}
+
+.lande-tokenomics-chart-track {
+  fill: none;
+  opacity: 0.16;
+  stroke: rgba(255, 255, 255, 0.16);
+  stroke-width: 44;
+}
+
+.lande-tokenomics-chart-segment {
+  cursor: pointer;
+  fill: none;
+  opacity: 0.92;
+  pointer-events: visibleStroke;
+  stroke-linecap: butt;
+  transition:
+    opacity 0.2s ease,
+    filter 0.2s ease;
+}
+
+.lande-tokenomics-chart-segment.is-active,
+.lande-tokenomics-chart-segment:hover {
+  filter: brightness(1.12);
+  opacity: 1;
+}
+
+.lande-tokenomics-chart-core {
+  align-items: center;
+  background: #0b0a24;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  height: 9.5rem;
+  justify-content: center;
+  position: relative;
+  width: 9.5rem;
+  z-index: 1;
+}
+
+.lande-tokenomics-chart-core span {
+  color: rgba(255, 255, 255, 0.68);
+  font-size: 14px;
+  letter-spacing: 0.08em;
+}
+
+.lande-tokenomics-chart-core strong {
+  color: #fff;
+  font-size: 32px;
+  line-height: 1;
+  margin-top: 0.35rem;
+}
+
+.lande-tokenomics-legend {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.lande-tokenomics-legend-item {
+  align-items: center;
+  border-radius: 0.8rem;
+  column-gap: 0.75rem;
+  display: grid;
+  grid-template-columns: 0.8rem minmax(0, 1fr) auto;
+  padding: 0.45rem 0.55rem;
+  transition: background-color 0.2s ease;
+}
+
+.lande-tokenomics-legend-item.is-active {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.lande-tokenomics-legend-item.is-active .lande-tokenomics-legend-label {
+  color: #ffffff;
+}
+
+.lande-tokenomics-legend-swatch {
+  border-radius: 999px;
+  display: block;
+  height: 0.8rem;
+  width: 0.8rem;
+}
+
+.lande-tokenomics-legend-label {
+  color: rgba(255, 255, 255, 0.84);
+  font-size: 14px;
+  line-height: 1.4;
+  transition: color 0.2s ease;
+}
+
+.lande-tokenomics-legend-value {
+  font-size: 14px;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.lande-eyebrow {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 22px;
+  margin-bottom: 1rem;
+}
+
+.lande-tokenomics-card h3 {
+  background: linear-gradient(90deg, #743cff 0%, #d56c92 45%, #ff9d11 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 72px;
+  font-weight: 700;
+  line-height: 1;
+  margin: 0 0 1.4rem;
+}
+
+.lande-tokenomics-copy {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 18px;
+  line-height: 1.6;
+  max-width: 33rem;
+}
+
+.lande-stats {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.lande-stats > div {
+  background: rgba(8, 8, 35, 0.85);
+  border: 1px solid #11115b;
+  border-radius: 0.75rem;
+  flex: 0 0 10rem;
+  padding: 1.35rem 1.2rem;
+}
+
+.lande-stats strong {
+  align-items: baseline;
+  display: inline-flex;
+  gap: 0.1rem;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.lande-stats strong span {
+  color: #858585;
+  font-size: 22px;
+  font-weight: 500;
+}
+
+.lande-stats span {
+  color: rgba(255, 255, 255, 0.72);
+  display: block;
+  font-size: 18px;
+  margin-top: 0.35rem;
+}
+
+.lande-use-case-card {
+  box-shadow: none;
+  min-height: 34rem;
+}
+
+.lande-usecases-title {
+  font-size: 42px !important;
+}
+
+.lande-use-case-card .lande-card-title h3 {
+  font-size: 22px;
+}
+
+.lande-use-case-card .lande-card-title img {
+  height: 44px;
+  width: 44px;
+}
+
+.lande-use-case-card:nth-child(2) .lande-card-title h3,
+.col-lg-4:nth-child(2) .lande-use-case-card .lande-card-title h3 {
+  color: #fee97d;
+}
+
+.lande-use-case-card p,
+.lande-use-case-card li {
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.lande-use-case-card ul {
+  list-style: disc;
+  padding-left: 1.5rem;
+}
+
+.lande-use-case-card li::marker {
+  color: #ffffff;
+}
+
+.lande-roadmap-section {
+  padding-bottom: 1.2rem;
+}
+
+.lande-timeline {
+  margin-top: 1rem;
+  padding: 1rem 0 0;
+  position: relative;
+}
+
+.lande-timeline-line {
+  background: rgba(255, 255, 255, 0.8);
+  height: calc(100% - 5rem);
+  left: 50%;
+  position: absolute;
+  top: 4rem;
+  transform: translateX(-50%);
+  width: 1px;
+}
+
+.lande-timeline-line-active {
+  background: var(--lande-orange);
+  height: calc(100% - 5rem);
+  inset: 4rem auto auto 50%;
+  transform: translateX(-50%) scaleY(0);
+  transform-origin: top center;
+  width: 1px;
+  z-index: 1;
+}
+
+.lande-timeline-row {
+  display: grid;
+  grid-template-columns: 1fr 3rem 1fr;
+  margin-bottom: 3rem;
+  position: relative;
+}
+
+.lande-timeline-left .lande-timeline-card,
+.lande-timeline-left .lande-timeline-meta {
+  grid-column: 1;
+}
+
+.lande-timeline-right .lande-timeline-card,
+.lande-timeline-right .lande-timeline-meta {
+  grid-column: 3;
+}
+
+.lande-timeline-dot {
+  align-self: start;
+  background: #2b2b2b;
+  border-radius: 50%;
+  box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.06);
+  grid-column: 2;
+  height: 1rem;
+  justify-self: center;
+  margin-top: 1.35rem;
+  transition:
+    background-color 0.25s ease,
+    box-shadow 0.25s ease;
+  width: 1rem;
+  z-index: 2;
+}
+
+.lande-timeline-dot.is-active {
+  background: var(--lande-orange);
+  box-shadow: 0 0 0 5px rgba(255, 157, 17, 0.16);
+}
+
+.lande-timeline-meta {
+  align-items: center;
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 0.65rem;
+}
+
+.lande-timeline-right .lande-timeline-meta {
+  justify-content: flex-start;
+}
+
+.lande-timeline-left .lande-timeline-meta {
+  justify-content: flex-end;
+}
+
+.lande-timeline-meta span {
+  color: rgba(255, 255, 255, 0.68);
+  font-size: 1.1rem;
+}
+
+.lande-timeline-meta em {
+  background: rgba(255, 157, 17, 0.18);
+  border: 1px solid rgba(255, 157, 17, 0.8);
+  border-radius: 999px;
+  color: #f3d3a0;
+  font-size: 0.75rem;
+  font-style: normal;
+  font-weight: 600;
+  padding: 0.3rem 0.65rem;
+}
+
+.lande-timeline-meta em.is-progress {
+  background: rgba(255, 157, 17, 0.12);
+}
+
+.lande-timeline-meta em.is-complete {
+  background: rgba(70, 191, 92, 0.16);
+  border-color: rgba(70, 191, 92, 0.85);
+  color: #78e58a;
+}
+
+.lande-timeline-card {
+  background: rgba(11, 10, 43, 0.86);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1rem;
+  box-shadow: none;
+  position: relative;
+  padding: 1.8rem 2rem;
+}
+
+.lande-timeline-card::before {
+  background: linear-gradient(90deg, #743cff 0%, #d56c92 45%, #ff9d11 100%);
+  border-radius: inherit;
+  content: "";
+  inset: -1px;
+  opacity: 0;
+  padding: 1px;
+  position: absolute;
+  transition: opacity 0.35s ease;
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.lande-timeline-card.is-active::before {
+  animation: landeBorderReveal 0.65s ease forwards;
+}
+
+@keyframes landeBorderReveal {
+  0% {
+    clip-path: inset(0 100% 100% 0 round 1rem);
+    opacity: 0.25;
+  }
+  50% {
+    clip-path: inset(0 0 0 0 round 1rem);
+    opacity: 0.75;
+  }
+  100% {
+    clip-path: inset(0 0 0 0 round 1rem);
+    opacity: 1;
+  }
+}
+
+.lande-cta-wrap {
+  padding: 3.5rem 0 4.2rem;
+}
+
+.lande-cta {
+  background:
+    radial-gradient(
+      circle at left center,
+      rgba(46, 63, 199, 0.15),
+      transparent 28%
+    ),
+    linear-gradient(90deg, rgba(15, 16, 70, 0.95), rgba(53, 31, 69, 0.75));
+  border-radius: 1.2rem;
+  margin: 0 auto;
+  padding: 4.7rem 1.5rem;
+  text-align: center;
+}
+
+.lande-cta h2 {
+  margin: 0 auto 2rem;
+  max-width: 55rem;
+}
+
+.lande-footer {
+  background: #010101;
+  padding: 3.5rem 0 2.5rem;
+}
+
+.lande-footer-top {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: 2.4rem;
+}
+
+.lande-footer-brand-col {
+  padding-right: 2rem;
+}
+
+.lande-footer-brand {
+  align-items: center;
+  display: inline-flex;
+  font-size: 2.1rem;
+  gap: 8px;
+  font-weight: 500;
+  margin-bottom: 1.25rem;
+}
+
+.lande-footer-brand img {
+  border-radius: 50%;
+  display: block;
+}
+
+.lande-footer-links a {
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 16px;
+  line-height: 1.75;
+}
+
+.lande-footer p,
+.lande-disclaimer p {
+  color: rgba(255, 255, 255, 0.72);
+  line-height: 1.75;
+}
+
+.lande-footer p {
+  font-size: 18px;
+}
+
+.lande-disclaimer p {
+  font-size: 16px;
+}
+
+.lande-footer h3 {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 1rem;
+  font-weight: 500;
+  margin: 0 0 1rem;
+  text-transform: uppercase;
+}
+
+.lande-footer-links {
+  list-style: none;
+  padding-left: 0;
+}
+
+.lande-footer-links-group {
+  justify-content: flex-start;
+}
+
+.lande-footer-links li + li {
+  margin-top: 0.55rem;
+}
+
+.lande-socials {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1.75rem;
+}
+
+.lande-socials a {
+  align-items: center;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 0.45rem;
+  display: inline-flex;
+  height: 2.5rem;
+  justify-content: center;
+  width: 2.5rem;
+}
+
+.lande-disclaimer {
+  margin: 2.2rem auto 0;
+  max-width: 53rem;
+  text-align: center;
+}
+
+.lande-disclaimer h4 {
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 991.98px) {
+  .lande-nav-desktop,
+  .lande-buy-btn-desktop {
+    display: none;
+  }
+
+  .lande-menu-toggle {
+    display: inline-flex;
+  }
+
+  .lande-hero {
+    min-height: auto;
+    padding: 3rem 1rem 4rem;
+  }
+
+  .lande-coin {
+    opacity: 0.76;
+  }
+
+  .lande-coin-solana {
+    left: -2%;
+    top: -1%;
+  }
+
+  .lande-coin-ethereum {
+    left: -7%;
+    top: 30%;
+  }
+
+  .lande-coin-ripple {
+    right: -7%;
+    top: 28%;
+  }
+
+  .lande-coin-tether {
+    right: 10%;
+    top: 2%;
+  }
+
+  .lande-coin-dash {
+    bottom: 6%;
+    right: 7%;
+    top: auto;
+  }
+
+  .lande-coin-bitcoin {
+    bottom: 5%;
+    left: 1%;
+  }
+
+  .lande-about-title {
+    margin: 0 !important;
+    text-align: left;
+  }
+
+  .lande-timeline-line {
+    left: 1rem;
+    transform: none;
+  }
+
+  .lande-timeline-line-active {
+    inset: 4rem auto auto 1rem;
+    transform: scaleY(0);
+    transform-origin: top center;
+  }
+
+  .lande-timeline-row {
+    gap: 0 1rem;
+    grid-template-columns: 2rem 1fr;
+    padding-left: 0;
+  }
+
+  .lande-timeline-meta,
+  .lande-timeline-card {
+    grid-column: 2 !important;
+  }
+
+  .lande-timeline-left .lande-timeline-meta,
+  .lande-timeline-right .lande-timeline-meta {
+    justify-content: flex-start;
+  }
+
+  .lande-timeline-dot {
+    grid-column: 1;
+    margin-top: 0.55rem;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .lande-support-bar {
+    font-size: 0.92rem;
+  }
+
+  .lande-support-panel {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .lande-brand {
+    font-size: 16px;
+  }
+
+  .lande-brand img {
+    height: 60px;
+    width: 60px;
+  }
+
+  .lande-mobile-menu {
+    left: auto;
+    max-width: 100%;
+    right: 0;
+    width: min(100%, calc(100vw - 2rem));
+  }
+
+  .lande-hero h1 {
+    font-size: 2.7rem;
+  }
+
+  .lande-hero p,
+  .lande-card p,
+  .lande-card li,
+  .lande-tokenomics-copy,
+  .lande-footer p,
+  .lande-disclaimer p {
+    font-size: 1rem;
+  }
+
+  .lande-hero-actions {
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .lande-buy-btn,
+  .lande-btn {
+    width: fit-content;
+  }
+
+  .lande-coin {
+    opacity: 0.3;
+    transform: scale(0.52);
+  }
+
+  .lande-coin-solana img {
+    transform: scale(0.6);
+  }
+
+  .lande-divider {
+    margin: 60px auto;
+  }
+
+  .lande-section-heading h2,
+  .lande-tokenomics-header h2,
+  .lande-cta h2 {
+    font-size: 2rem;
+    line-height: 1.35;
+  }
+
+  .lande-card,
+  .lande-tokenomics-card,
+  .lande-tokenomics-chart-card,
+  .lande-timeline-card,
+  .lande-cta {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+
+  .lande-stats {
+    flex-direction: column;
+  }
+
+  .lande-stats > div {
+    flex-basis: auto;
+  }
+
+  .lande-tokenomics-chart {
+    height: 15rem;
+    width: 15rem;
+  }
+
+  .lande-tokenomics-chart-core {
+    height: 8rem;
+    width: 8rem;
+  }
+
+  .lande-donation-modal {
+    padding: 1.5rem;
+  }
+
+  .lande-donation-amounts,
+  .lande-donation-inputs {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 575.99px) and (max-width: 991.98px) {
+  .lande-header {
+    margin-bottom: 1.5rem;
+  }
+
+  .lande-mobile-menu {
+    max-width: 22rem;
+    width: min(22rem, calc(100vw - 2rem));
+  }
+
+  .lande-tokenomics-chart-card {
+    padding: 1.5rem;
+  }
+
+  .lande-donation-modal {
+    padding: 2rem;
+  }
+}
+
+@media (min-width: 991.98px) and (max-width: 1199.98px) {
+  .lande-nav {
+    gap: 1.35rem;
+  }
+
+  .lande-tokenomics-chart {
+    height: 16rem;
+    width: 16rem;
+  }
+}
+
+@media (min-width: 1199.98px) and (max-width: 1399.98px) {
+  .lande-hero {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+@media (min-width: 1366.98px) and (max-width: 1512.98px) {
+  .lande-shell {
+    max-width: 1280px;
+  }
+}
