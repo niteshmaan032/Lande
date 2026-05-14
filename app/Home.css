@@ -1463,6 +1463,10 @@
     padding: 1.5rem;
   }
 
+  .lande-tokenomics-card h3 {
+    font-size: 38px;
+  }
+
   .lande-donation-amounts,
   .lande-donation-inputs {
     grid-template-columns: 1fr;
