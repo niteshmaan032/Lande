@@ -93,12 +93,9 @@
 }
 
 .lande-donation-modal-backdrop {
-  align-items: center;
   background: rgba(2, 2, 10, 0.72);
-  display: flex;
   inset: 0;
-  justify-content: center;
-  padding: 1.25rem;
+  overflow-y: auto;
   position: fixed;
   z-index: 200;
 }
@@ -106,8 +103,8 @@
 .lande-donation-modal {
   background: #ffffff;
   border: 0;
-  border-radius: 1.25rem;
-  max-width: 48rem;
+  border-radius: 0;
+  min-height: 100%;
   padding: 2.75rem 3rem 3rem;
   width: 100%;
 }
@@ -277,6 +274,8 @@
 .lande-brand img {
   border-radius: 50%;
   display: block;
+  height: 90px;
+  width: 90px;
 }
 
 .lande-nav {
@@ -1257,7 +1256,7 @@
   }
 
   .lande-hero {
-    min-height: auto;
+    min-height: 80svh;
     padding: 3rem 1rem 4rem;
   }
 
@@ -1332,6 +1331,14 @@
     grid-column: 1;
     margin-top: 0.55rem;
   }
+
+  .lande-about-vision,
+  .lande-about-problem,
+  .lande-about-solution,
+  .lande-use-case-card {
+    height: auto;
+    min-height: auto;
+  }
 }
 
 @media (max-width: 575.98px) {
@@ -1349,8 +1356,8 @@
   }
 
   .lande-brand img {
-    height: 60px;
-    width: 60px;
+    height: 90px;
+    width: 90px;
   }
 
   .lande-mobile-menu {
@@ -1401,6 +1408,13 @@
   .lande-cta h2 {
     font-size: 2rem;
     line-height: 1.35;
+  }
+
+  .lande-about-title,
+  .lande-usecases-title,
+  .lande-roadmap-title {
+    font-size: 18px !important;
+    line-height: 1.55 !important;
   }
 
   .lande-card,

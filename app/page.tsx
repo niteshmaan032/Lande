@@ -472,6 +472,11 @@ export default function Home() {
     setDonationFiatValue(selectedDonation.fiat);
   }, [selectedDonation]);
 
+  useEffect(() => {
+    document.body.style.overflow = donationOpen ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [donationOpen]);
+
   const handleCryptoChange = (value: string) => {
     setDonationCryptoValue(value);
 
