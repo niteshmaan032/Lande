@@ -269,7 +269,7 @@
 .lande-brand {
   align-items: center;
   display: inline-flex;
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 700;
   gap: 6px;
   letter-spacing: 0.02em;
@@ -1356,7 +1356,7 @@
   }
 
   .lande-brand {
-    font-size: 16px;
+    font-size: 20px;
   }
 
   .lande-brand img {
