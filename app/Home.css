@@ -1343,6 +1343,17 @@
     height: auto;
     min-height: auto;
   }
+
+  .lande-donation-modal-backdrop {
+    align-items: flex-start;
+    padding: 0;
+  }
+
+  .lande-donation-modal {
+    border-radius: 0;
+    max-width: 100%;
+    min-height: 100%;
+  }
 }
 
 @media (max-width: 575.98px) {
