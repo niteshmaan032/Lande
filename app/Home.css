@@ -251,7 +251,7 @@
 }
 
 .lande-hero-section {
-  background-image: url("/images/hero-bg.png");
+  /* background-image: url("/images/hero-bg.png"); */
   background-position: center top;
   background-repeat: no-repeat;
   background-size: cover;
