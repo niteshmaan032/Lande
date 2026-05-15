@@ -1317,14 +1317,9 @@ export default function Home() {
                   height={280}
                 />
               </div>
-              <a
-                className="lande-donation-address"
-                href={`https://solscan.io/account/${SOLANA_ADDRESS}`}
-                target="_blank"
-                rel="noreferrer"
-              >
+              <span className="lande-donation-address">
                 {SOLANA_ADDRESS}
-              </a>
+              </span>
               <div className="lande-donation-amounts">
                 {donationOptions.map((option, index) => (
                   <button
