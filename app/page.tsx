@@ -234,27 +234,10 @@ const donationMethods = [
 ];
 
 const SOLANA_ADDRESS = "Fyt7uy5TxCcwzULiyR3uqm1TwPrCDB8XSmkKhYj72C9v";
-const SOLANA_USD_PRICE = 172.48;
-
 const donationOptions = [
-  {
-    amount: "$50.00",
-    crypto: `(${(50 / SOLANA_USD_PRICE).toFixed(4)} SOL)`,
-    value: (50 / SOLANA_USD_PRICE).toFixed(4),
-    fiat: "50",
-  },
-  {
-    amount: "$100.00",
-    crypto: `(${(100 / SOLANA_USD_PRICE).toFixed(4)} SOL)`,
-    value: (100 / SOLANA_USD_PRICE).toFixed(4),
-    fiat: "100",
-  },
-  {
-    amount: "$200.00",
-    crypto: `(${(200 / SOLANA_USD_PRICE).toFixed(4)} SOL)`,
-    value: (200 / SOLANA_USD_PRICE).toFixed(4),
-    fiat: "200",
-  },
+  { amount: "$50.00" },
+  { amount: "$100.00" },
+  { amount: "$200.00" },
 ];
 
 const fadeUp: Variants = {
@@ -469,24 +452,11 @@ export default function Home() {
   const [comingSoonOpen, setComingSoonOpen] = useState(false);
   const [headerMenuOpen, setHeaderMenuOpen] = useState(false);
   const [selectedDonationIndex, setSelectedDonationIndex] = useState(1);
-  const [donationCryptoValue, setDonationCryptoValue] = useState(
-    donationOptions[1].value,
-  );
-  const [donationFiatValue, setDonationFiatValue] = useState(
-    donationOptions[1].fiat,
-  );
-  const [donationDescription, setDonationDescription] = useState("");
   const { scrollYProgress } = useScroll({
     target: timelineRef,
     offset: ["start 75%", "end 35%"],
   });
   const roadmapProgress = useTransform(scrollYProgress, [0, 1], [0, 1]);
-  const selectedDonation = donationOptions[selectedDonationIndex];
-
-  useEffect(() => {
-    setDonationCryptoValue(selectedDonation.value);
-    setDonationFiatValue(selectedDonation.fiat);
-  }, [selectedDonation]);
 
   useEffect(() => {
     document.body.style.overflow =
@@ -495,28 +465,6 @@ export default function Home() {
       document.body.style.overflow = "";
     };
   }, [comingSoonOpen, donationOpen]);
-
-  const handleCryptoChange = (value: string) => {
-    setDonationCryptoValue(value);
-
-    const parsed = Number(value);
-    if (!Number.isNaN(parsed) && Number.isFinite(parsed)) {
-      setDonationFiatValue((parsed * SOLANA_USD_PRICE).toFixed(2));
-    } else if (value.trim() === "") {
-      setDonationFiatValue("");
-    }
-  };
-
-  const handleFiatChange = (value: string) => {
-    setDonationFiatValue(value);
-
-    const parsed = Number(value);
-    if (!Number.isNaN(parsed) && Number.isFinite(parsed)) {
-      setDonationCryptoValue((parsed / SOLANA_USD_PRICE).toFixed(4));
-    } else if (value.trim() === "") {
-      setDonationCryptoValue("");
-    }
-  };
 
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
     setRoadmapProgressValue(latest);
@@ -1335,35 +1283,18 @@ export default function Home() {
                     onClick={() => setSelectedDonationIndex(index)}
                   >
                     <strong>{option.amount}</strong>
-                    <span>{option.crypto}</span>
                   </button>
                 ))}
               </div>
-              <div className="lande-donation-inputs">
-                <input
-                  className="lande-donation-field"
-                  type="text"
-                  value={donationCryptoValue}
-                  onChange={(event) => handleCryptoChange(event.target.value)}
-                  placeholder="SOL amount"
-                  aria-label="Solana amount"
-                />
-                <input
-                  className="lande-donation-field"
-                  type="text"
-                  value={donationFiatValue}
-                  onChange={(event) => handleFiatChange(event.target.value)}
-                  placeholder="USD amount"
-                  aria-label="USD amount"
-                />
+              <div className="lande-donation-warning" role="note">
+                <span className="lande-donation-warning-icon" aria-hidden="true">
+                  i
+                </span>
+                <p>
+                  Only send Solana (SOL) assets to this address. Other assets
+                  will be lost forever.
+                </p>
               </div>
-              <textarea
-                className="lande-donation-note"
-                value={donationDescription}
-                onChange={(event) => setDonationDescription(event.target.value)}
-                placeholder="Optional description (for your wallet)"
-                aria-label="Donation description"
-              />
             </motion.div>
           </motion.div>
         ) : null}

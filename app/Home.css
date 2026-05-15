@@ -215,38 +215,39 @@
   margin-top: 0.25rem;
 }
 
-.lande-donation-inputs {
-  display: grid;
-  gap: 1rem;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  margin-bottom: 1rem;
+.lande-donation-warning {
+  align-items: flex-start;
+  background: #f6f0dd;
+  border: 1px solid rgba(179, 135, 20, 0.12);
+  border-radius: 1.2rem;
+  color: #2f2a1f;
+  display: flex;
+  gap: 0.9rem;
+  margin-top: 0.25rem;
+  padding: 1rem 1.1rem;
 }
 
-.lande-donation-field,
-.lande-donation-note {
-  background: #fff;
-  border: 1px solid #d6dce3;
-  color: #3c4b5b;
-  font-size: 16px;
+.lande-donation-warning-icon {
+  align-items: center;
+  background: #b2861a;
+  border-radius: 999px;
+  color: #fff;
+  display: inline-flex;
+  flex: 0 0 1.7rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  height: 1.7rem;
+  justify-content: center;
+  line-height: 1;
+  margin-top: 0.1rem;
+  text-transform: lowercase;
+  width: 1.7rem;
 }
 
-.lande-donation-field {
-  outline: none;
-  min-height: 3.6rem;
-  padding: 1rem 1.2rem;
-}
-
-.lande-donation-note {
-  min-height: 5rem;
-  outline: none;
-  padding: 1rem 1.2rem;
-  resize: vertical;
-  width: 100%;
-}
-
-.lande-donation-field::placeholder,
-.lande-donation-note::placeholder {
-  color: #7a8795;
+.lande-donation-warning p {
+  font-size: 1rem;
+  line-height: 1.5;
+  margin: 0;
 }
 
 .lande-hero-section {
@@ -1612,8 +1613,7 @@
     flex-direction: column;
   }
 
-  .lande-donation-amounts,
-  .lande-donation-inputs {
+  .lande-donation-amounts {
     grid-template-columns: 1fr;
   }
 }
