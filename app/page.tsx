@@ -189,7 +189,18 @@ const roadmap = [
   },
 ];
 
-const footerColumns = [
+type FooterLink = {
+  label: string;
+  href: string;
+  icon?: boolean;
+};
+
+type FooterColumn = {
+  heading: string;
+  links: FooterLink[];
+};
+
+const footerColumns: FooterColumn[] = [
   {
     heading: "PAGES",
     links: [
@@ -209,35 +220,33 @@ const footerColumns = [
 
 const donationMethods = [
   { label: "USDT (TRC20)", hint: "Wallet ending 4X7P" },
-  { label: "Bitcoin", hint: "Wallet ending 8K2M" },
+  { label: "Solana", hint: "Wallet ending 2C9v" },
   { label: "Ethereum", hint: "Wallet ending 3D1Q" },
 ];
+
+const SOLANA_ADDRESS = "Fyt7uy5TxCcwzULiyR3uqm1TwPrCDB8XSmkKhYj72C9v";
+const SOLANA_USD_PRICE = 172.48;
 
 const donationOptions = [
   {
     amount: "$50.00",
-    crypto: "(0.00062662 BTC)",
-    address: "bc1fake50landeqrwalletsupport0001",
-    value: "0.00062662",
+    crypto: `(${(50 / SOLANA_USD_PRICE).toFixed(4)} SOL)`,
+    value: (50 / SOLANA_USD_PRICE).toFixed(4),
     fiat: "50",
   },
   {
     amount: "$100.00",
-    crypto: "(0.00125325 BTC)",
-    address: "bc1fake100landeqrwalletsupport0002",
-    value: "0.00125325",
+    crypto: `(${(100 / SOLANA_USD_PRICE).toFixed(4)} SOL)`,
+    value: (100 / SOLANA_USD_PRICE).toFixed(4),
     fiat: "100",
   },
   {
     amount: "$200.00",
-    crypto: "(0.00250649 BTC)",
-    address: "bc1fake200landeqrwalletsupport0003",
-    value: "0.00250649",
+    crypto: `(${(200 / SOLANA_USD_PRICE).toFixed(4)} SOL)`,
+    value: (200 / SOLANA_USD_PRICE).toFixed(4),
     fiat: "200",
   },
 ];
-
-const BTC_USD_PRICE = 79685.24;
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 36 },
@@ -448,6 +457,7 @@ export default function Home() {
   const [roadmapThresholds, setRoadmapThresholds] = useState<number[]>([]);
   const [supportExpanded, setSupportExpanded] = useState(false);
   const [donationOpen, setDonationOpen] = useState(false);
+  const [comingSoonOpen, setComingSoonOpen] = useState(false);
   const [headerMenuOpen, setHeaderMenuOpen] = useState(false);
   const [selectedDonationIndex, setSelectedDonationIndex] = useState(1);
   const [donationCryptoValue, setDonationCryptoValue] = useState(
@@ -470,16 +480,16 @@ export default function Home() {
   }, [selectedDonation]);
 
   useEffect(() => {
-    document.body.style.overflow = donationOpen ? "hidden" : "";
+    document.body.style.overflow = donationOpen || comingSoonOpen ? "hidden" : "";
     return () => { document.body.style.overflow = ""; };
-  }, [donationOpen]);
+  }, [comingSoonOpen, donationOpen]);
 
   const handleCryptoChange = (value: string) => {
     setDonationCryptoValue(value);
 
     const parsed = Number(value);
     if (!Number.isNaN(parsed) && Number.isFinite(parsed)) {
-      setDonationFiatValue((parsed * BTC_USD_PRICE).toFixed(2));
+      setDonationFiatValue((parsed * SOLANA_USD_PRICE).toFixed(2));
     } else if (value.trim() === "") {
       setDonationFiatValue("");
     }
@@ -490,7 +500,7 @@ export default function Home() {
 
     const parsed = Number(value);
     if (!Number.isNaN(parsed) && Number.isFinite(parsed)) {
-      setDonationCryptoValue((parsed / BTC_USD_PRICE).toFixed(8));
+      setDonationCryptoValue((parsed / SOLANA_USD_PRICE).toFixed(4));
     } else if (value.trim() === "") {
       setDonationCryptoValue("");
     }
@@ -588,9 +598,13 @@ export default function Home() {
                 ))}
               </nav>
               <div className="lande-header-actions">
-                <a className="lande-buy-btn lande-buy-btn-desktop" href="#cta">
+                <button
+                  type="button"
+                  className="lande-buy-btn lande-buy-btn-desktop"
+                  onClick={() => setComingSoonOpen(true)}
+                >
                   Buy / Sell
-                </a>
+                </button>
                 <button
                   type="button"
                   className="lande-menu-toggle"
@@ -622,13 +636,16 @@ export default function Home() {
                       </a>
                     ))}
                   </nav>
-                  <a
+                  <button
+                    type="button"
                     className="lande-buy-btn lande-buy-btn-mobile"
-                    href="#cta"
-                    onClick={() => setHeaderMenuOpen(false)}
+                    onClick={() => {
+                      setHeaderMenuOpen(false);
+                      setComingSoonOpen(true);
+                    }}
                   >
                     Buy / Sell
-                  </a>
+                  </button>
                 </motion.div>
               ) : null}
             </AnimatePresence>
@@ -771,7 +788,7 @@ export default function Home() {
               </p>
               <div className="lande-hero-actions">
                 <a className="lande-btn lande-btn-light" href="#tokenomics">
-                  Get started with Bitcoin
+                  Get started with Lande
                 </a>
                 <a className="lande-btn lande-btn-primary" href="#about">
                   Know more
@@ -1108,7 +1125,12 @@ export default function Home() {
               Start Your Learn-to-Earn Journey Today Join LANDE and turn your
               skills into income.
             </h2>
-            <a className="lande-btn lande-btn-primary" href="#home">
+            <a
+              className="lande-btn lande-btn-primary"
+              href="https://t.me/LearnAndEarn_LANDE"
+              target="_blank"
+              rel="noreferrer"
+            >
               Join the community
             </a>
           </motion.div>
@@ -1143,7 +1165,7 @@ export default function Home() {
                   <BsTwitterX />
                 </a>
                 <a
-                  href="https://t.me/Learnandearntoken"
+                  href="https://t.me/LearnAndEarn_LANDE"
                   aria-label="Telegram"
                   target="_blank"
                   rel="noreferrer"
@@ -1186,6 +1208,60 @@ export default function Home() {
       </footer>
 
       <AnimatePresence>
+        {comingSoonOpen ? (
+          <motion.div
+            className="lande-donation-modal-backdrop lande-coming-soon-backdrop"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setComingSoonOpen(false)}
+          >
+            <motion.div
+              className="lande-coming-soon-modal"
+              initial={{ opacity: 0, scale: 0.96, y: 18 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.96, y: 18 }}
+              transition={{ duration: 0.22, ease: "easeOut" }}
+              onClick={(event) => event.stopPropagation()}
+            >
+              <button
+                type="button"
+                className="lande-coming-soon-close"
+                onClick={() => setComingSoonOpen(false)}
+                aria-label="Close coming soon popup"
+              >
+                ×
+              </button>
+              <span className="lande-coming-soon-tag">LANDE Trading</span>
+              <h3>Buy / Sell is coming soon</h3>
+              <p>
+                We&apos;re preparing the trading flow to match the rest of the
+                LANDE ecosystem. Follow the community for launch updates and
+                early access announcements.
+              </p>
+              <div className="lande-coming-soon-actions">
+                <a
+                  className="lande-btn lande-btn-primary"
+                  href="https://t.me/LearnAndEarn_LANDE"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Join Telegram
+                </a>
+                <button
+                  type="button"
+                  className="lande-coming-soon-dismiss"
+                  onClick={() => setComingSoonOpen(false)}
+                >
+                  Maybe later
+                </button>
+              </div>
+            </motion.div>
+          </motion.div>
+        ) : null}
+      </AnimatePresence>
+
+      <AnimatePresence>
         {donationOpen ? (
           <motion.div
             className="lande-donation-modal-backdrop"
@@ -1219,10 +1295,20 @@ export default function Home() {
                 Use this QR code or address below
               </p>
               <div className="lande-donation-qr-wrap">
-                <FakeQrCode value={selectedDonation.address} />
+                <Image
+                  src="/images/code.jpeg"
+                  alt="Solana wallet QR code"
+                  width={280}
+                  height={280}
+                />
               </div>
-              <a className="lande-donation-address" href="#">
-                {selectedDonation.address}
+              <a
+                className="lande-donation-address"
+                href={`https://solscan.io/account/${SOLANA_ADDRESS}`}
+                target="_blank"
+                rel="noreferrer"
+              >
+                {SOLANA_ADDRESS}
               </a>
               <div className="lande-donation-amounts">
                 {donationOptions.map((option, index) => (
@@ -1245,8 +1331,8 @@ export default function Home() {
                   type="text"
                   value={donationCryptoValue}
                   onChange={(event) => handleCryptoChange(event.target.value)}
-                  placeholder="BTC amount"
-                  aria-label="Bitcoin amount"
+                  placeholder="SOL amount"
+                  aria-label="Solana amount"
                 />
                 <input
                   className="lande-donation-field"
