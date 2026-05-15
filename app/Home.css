@@ -1326,9 +1326,10 @@
 
 .lande-socials a {
   align-items: center;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--lande-orange);
+  border: 1px solid var(--lande-orange);
   border-radius: 0.45rem;
+  color: #fff;
   display: inline-flex;
   height: 2.5rem;
   justify-content: center;

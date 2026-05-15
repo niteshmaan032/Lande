@@ -1087,7 +1087,7 @@ export default function Home() {
             </h2>
             <a
               className="lande-btn lande-btn-primary"
-              href="https://t.me/LearnAndEarn_LANDE"
+              href="https://x.com/LANDETOKEN"
               target="_blank"
               rel="noreferrer"
             >
