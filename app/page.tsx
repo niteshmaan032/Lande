@@ -130,7 +130,7 @@ const roadmap = [
   {
     phase: "PHASE 01",
     status: "COMPLETED",
-    title: "Foundation (Q1 2026)",
+    title: "Foundation (Q2 2026)",
     image: "/images/phase1.png",
     side: "left",
     items: [
@@ -143,7 +143,7 @@ const roadmap = [
   {
     phase: "PHASE 02",
     status: "IN PROGRESS",
-    title: "Platform Beta (Q2 2026)",
+    title: "Platform Beta (Q3 2026)",
     image: "/images/layers.png",
     side: "right",
     items: [
@@ -156,7 +156,7 @@ const roadmap = [
   {
     phase: "PHASE 03",
     status: "IN PROGRESS",
-    title: "Ecosystem Launch (Q3 2026)",
+    title: "Ecosystem Launch (Q4 2026)",
     image: "/images/rocket.png",
     side: "left",
     items: [
