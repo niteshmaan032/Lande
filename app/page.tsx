@@ -218,7 +218,11 @@ const footerColumns: FooterColumn[] = [
   {
     heading: "CONTACT",
     links: [
-      { label: "info@gmail.com", href: "mailto:info@gmail.com", icon: true },
+      {
+        label: "info@learnandearnlande.com",
+        href: "mailto:info@learnandearnlande.com",
+        icon: true,
+      },
     ],
   },
 ];
