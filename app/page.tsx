@@ -12,7 +12,12 @@ import {
   type Variants,
 } from "framer-motion";
 import { BsTelegram, BsTwitterX } from "react-icons/bs";
-import { HiArrowLongRight, HiBars3, HiEnvelope, HiXMark } from "react-icons/hi2";
+import {
+  HiArrowLongRight,
+  HiBars3,
+  HiEnvelope,
+  HiXMark,
+} from "react-icons/hi2";
 import "./Home.css";
 
 const navItems = [
@@ -480,8 +485,11 @@ export default function Home() {
   }, [selectedDonation]);
 
   useEffect(() => {
-    document.body.style.overflow = donationOpen || comingSoonOpen ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
+    document.body.style.overflow =
+      donationOpen || comingSoonOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [comingSoonOpen, donationOpen]);
 
   const handleCryptoChange = (value: string) => {
@@ -1183,7 +1191,14 @@ export default function Home() {
                       {column.links.map((link) => (
                         <li key={link.label}>
                           <a href={link.href}>
-                            {link.icon && <HiEnvelope style={{ marginRight: "0.35rem", verticalAlign: "middle" }} />}
+                            {link.icon && (
+                              <HiEnvelope
+                                style={{
+                                  marginRight: "0.35rem",
+                                  verticalAlign: "middle",
+                                }}
+                              />
+                            )}
                             {link.label}
                           </a>
                         </li>
