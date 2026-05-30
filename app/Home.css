@@ -515,7 +515,7 @@
 .lande-hero {
   min-height: calc(100svh - 5.85rem);
   overflow: visible;
-  padding: 4.5rem 2.75rem 7rem;
+  padding: 1.75rem 2.75rem 3.5rem;
   position: relative;
 }
 
@@ -563,6 +563,216 @@
   gap: 1.25rem;
   justify-content: center;
   margin-top: 2.6rem;
+}
+
+@property --lande-presale-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+.lande-presale {
+  border-radius: 0.75rem;
+  display: inline-flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  text-decoration: none;
+  transition:
+    transform 0.22s ease,
+    box-shadow 0.22s ease,
+    border-color 0.22s ease;
+}
+
+.lande-presale:hover,
+.lande-presale:focus-visible {
+  transform: translateY(-2px);
+}
+
+.lande-presale-hero {
+  background:
+    radial-gradient(circle at top left, rgba(255, 157, 17, 0.32), transparent 60%),
+    linear-gradient(135deg, rgba(15, 14, 56, 0.92), rgba(33, 18, 71, 0.92));
+  border: 1px solid rgba(255, 157, 17, 0.42);
+  box-shadow: 0 12px 28px rgba(8, 6, 32, 0.32);
+  display: flex;
+  isolation: isolate;
+  margin: 2rem auto 0;
+  max-width: 22rem;
+  padding: 0.65rem 0.85rem;
+  position: relative;
+  width: min(100%, 22rem);
+  z-index: 60;
+}
+
+.lande-presale-hero::before {
+  background: conic-gradient(
+    from var(--lande-presale-angle, 0deg),
+    #ff9d11 0%,
+    #ffe17a 20%,
+    #ff4fa3 45%,
+    #743cff 65%,
+    #ff9d11 100%
+  );
+  border-radius: inherit;
+  content: "";
+  inset: -2px;
+  padding: 2px;
+  pointer-events: none;
+  position: absolute;
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: lande-presale-border-spin 5s linear infinite;
+  z-index: -1;
+}
+
+.lande-presale-hero::after {
+  background: conic-gradient(
+    from var(--lande-presale-angle, 0deg),
+    rgba(255, 157, 17, 0.55),
+    rgba(255, 79, 163, 0.45),
+    rgba(116, 60, 255, 0.45),
+    rgba(255, 157, 17, 0.55)
+  );
+  border-radius: inherit;
+  content: "";
+  filter: blur(18px);
+  inset: -6px;
+  opacity: 0.55;
+  pointer-events: none;
+  position: absolute;
+  animation: lande-presale-border-spin 5s linear infinite;
+  z-index: -2;
+}
+
+@keyframes lande-presale-border-spin {
+  to {
+    --lande-presale-angle: 360deg;
+  }
+}
+
+@supports not (background: conic-gradient(from 0deg, red, blue)) {
+  .lande-presale-hero::before,
+  .lande-presale-hero::after {
+    animation: none;
+    background: linear-gradient(135deg, #ff9d11, #ff4fa3, #743cff, #ff9d11);
+  }
+}
+
+.lande-presale-hero:hover,
+.lande-presale-hero:focus-visible {
+  border-color: rgba(255, 157, 17, 0.75);
+  box-shadow: 0 22px 48px rgba(255, 138, 0, 0.25);
+}
+
+.lande-presale-modal {
+  background: linear-gradient(135deg, #fff5e2 0%, #ffe1bd 100%);
+  border: 1px solid rgba(242, 138, 0, 0.28);
+  color: #2b1a05;
+  margin-top: 1.4rem;
+  padding: 1.1rem 1.25rem;
+  width: 100%;
+}
+
+.lande-presale-label {
+  color: rgba(255, 255, 255, 0.84);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.lande-presale-modal .lande-presale-label {
+  color: #8a4b00;
+}
+
+.lande-presale-grid {
+  display: grid;
+  gap: 0.35rem;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.lande-presale-cell {
+  align-items: center;
+  background: rgba(8, 7, 32, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.05rem;
+  padding: 0.35rem 0.2rem;
+}
+
+.lande-presale-modal .lande-presale-cell {
+  background: rgba(255, 255, 255, 0.7);
+  border-color: rgba(242, 138, 0, 0.25);
+}
+
+.lande-presale-cell strong {
+  color: #fff;
+  font-feature-settings: "tnum" 1;
+  font-size: 1.1rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.lande-presale-modal .lande-presale-cell strong {
+  color: #c26a00;
+}
+
+.lande-presale-cell span {
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 0.58rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.lande-presale-modal .lande-presale-cell span {
+  color: #8a4b00;
+}
+
+.lande-presale-hint {
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 0.68rem;
+  text-align: center;
+}
+
+.lande-presale-modal .lande-presale-hint {
+  color: #8a4b00;
+}
+
+.lande-presale-dates {
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(242, 138, 0, 0.18);
+  border-radius: 0.85rem;
+  display: grid;
+  gap: 0.5rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: 1.2rem;
+  padding: 0.85rem 1rem;
+}
+
+.lande-presale-dates > div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.lande-presale-dates span {
+  color: #8a4b00;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.lande-presale-dates strong {
+  color: #2b1a05;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
 }
 
 .lande-coin {
@@ -1610,6 +1820,18 @@
 
   .lande-tokenomics-card h3 {
     font-size: 38px;
+  }
+
+  .lande-presale-hero {
+    padding: 0.55rem 0.7rem;
+  }
+
+  .lande-presale-cell strong {
+    font-size: 1rem;
+  }
+
+  .lande-presale-dates {
+    grid-template-columns: 1fr;
   }
 
   .lande-timeline-card .lande-card-title {

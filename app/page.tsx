@@ -240,6 +240,88 @@ const donationOptions = [
   { amount: "$200.00" },
 ];
 
+const PRESALE_START_MS = Date.UTC(2026, 4, 31, 0, 1, 0);
+const PRESALE_END_MS = Date.UTC(2026, 7, 31, 0, 0, 0);
+const PRESALE_URL =
+  "https://www.pinksale.finance/solana/launchpad/6tkoPY2LUZUQyxzGRPpUdABPoQ5LqTQ79izFzF6j1xRR";
+
+function usePresaleCountdown() {
+  const [now, setNow] = useState<number | null>(null);
+
+  useEffect(() => {
+    setNow(Date.now());
+    const id = window.setInterval(() => setNow(Date.now()), 1000);
+    return () => window.clearInterval(id);
+  }, []);
+
+  if (now === null) {
+    return {
+      label: "Presale Starts In",
+      days: 0,
+      hours: 0,
+      minutes: 0,
+      seconds: 0,
+      ended: false,
+      ready: false,
+    };
+  }
+
+  const beforeStart = now < PRESALE_START_MS;
+  const afterEnd = now >= PRESALE_END_MS;
+  const target = beforeStart ? PRESALE_START_MS : PRESALE_END_MS;
+  const diff = Math.max(0, target - now);
+
+  return {
+    label: beforeStart ? "Presale Starts In" : afterEnd ? "Presale Ended" : "Presale Ends In",
+    days: Math.floor(diff / 86_400_000),
+    hours: Math.floor((diff / 3_600_000) % 24),
+    minutes: Math.floor((diff / 60_000) % 60),
+    seconds: Math.floor((diff / 1000) % 60),
+    ended: afterEnd,
+    ready: true,
+  };
+}
+
+const pad2 = (value: number) => value.toString().padStart(2, "0");
+
+type CountdownVariant = "hero" | "modal";
+
+function PresaleCountdown({ variant }: { variant: CountdownVariant }) {
+  const { label, days, hours, minutes, seconds, ended, ready } =
+    usePresaleCountdown();
+
+  return (
+    <a
+      className={`lande-presale lande-presale-${variant}`}
+      href={PRESALE_URL}
+      target="_blank"
+      rel="noreferrer"
+    >
+      <span className="lande-presale-label">{label}</span>
+      <div
+        className="lande-presale-grid"
+        aria-live="polite"
+        suppressHydrationWarning
+      >
+        {[
+          { value: days, unit: "Days" },
+          { value: hours, unit: "Hours" },
+          { value: minutes, unit: "Min" },
+          { value: seconds, unit: "Sec" },
+        ].map((cell) => (
+          <div key={cell.unit} className="lande-presale-cell">
+            <strong>{ready ? pad2(cell.value) : "--"}</strong>
+            <span>{cell.unit}</span>
+          </div>
+        ))}
+      </div>
+      {!ended ? (
+        <span className="lande-presale-hint">Tap to join on PinkSale</span>
+      ) : null}
+    </a>
+  );
+}
+
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 36 },
   visible: {
@@ -746,6 +828,7 @@ export default function Home() {
                 to transform how people learn, earn, and grow in the global
                 economy.
               </p>
+              <PresaleCountdown variant="hero" />
               <div className="lande-hero-actions">
                 <a className="lande-btn lande-btn-light" href="#tokenomics">
                   Get started with Lande
@@ -926,7 +1009,7 @@ export default function Home() {
                   </div>
                   <div>
                     <strong>
-                      20<span>%</span>
+                      45<span>%</span>
                     </strong>
                     <span>Pre-sale</span>
                   </div>
@@ -1199,29 +1282,59 @@ export default function Home() {
               >
                 ×
               </button>
-              <span className="lande-coming-soon-tag">LANDE Trading</span>
-              <h3>Buy / Sell is coming soon</h3>
+              {/*
+                COMING SOON — kept for future reuse.
+                <span className="lande-coming-soon-tag">LANDE Trading</span>
+                <h3>Buy / Sell is coming soon</h3>
+                <p>
+                  We&apos;re preparing the trading flow to match the rest of the
+                  LANDE ecosystem. Follow the community for launch updates and
+                  early access announcements.
+                </p>
+                <div className="lande-coming-soon-actions">
+                  <a
+                    className="lande-btn lande-btn-primary"
+                    href="https://t.me/LearnAndEarn_LANDE"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Join Telegram
+                  </a>
+                  <button
+                    type="button"
+                    className="lande-coming-soon-dismiss"
+                    onClick={() => setComingSoonOpen(false)}
+                  >
+                    Maybe later
+                  </button>
+                </div>
+              */}
+              <span className="lande-coming-soon-tag">LANDE Pre-sale</span>
+              <h3>Pre-sale is live on PinkSale</h3>
               <p>
-                We&apos;re preparing the trading flow to match the rest of the
-                LANDE ecosystem. Follow the community for launch updates and
-                early access announcements.
+                Secure your LANDE tokens during the official launch window.
               </p>
+              <div className="lande-presale-dates">
+                <div>
+                  <span>Start</span>
+                  <strong>2026.05.31 00:01 UTC</strong>
+                </div>
+                <div>
+                  <span>End</span>
+                  <strong>2026.08.31 00:00 UTC</strong>
+                </div>
+              </div>
+              <PresaleCountdown variant="modal" />
               <div className="lande-coming-soon-actions">
                 <a
                   className="lande-btn lande-btn-primary"
-                  href="https://t.me/LearnAndEarn_LANDE"
+                  href={PRESALE_URL}
                   target="_blank"
                   rel="noreferrer"
-                >
-                  Join Telegram
-                </a>
-                <button
-                  type="button"
-                  className="lande-coming-soon-dismiss"
                   onClick={() => setComingSoonOpen(false)}
                 >
-                  Maybe later
-                </button>
+                  Buy Now
+                </a>
               </div>
             </motion.div>
           </motion.div>
